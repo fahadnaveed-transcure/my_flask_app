@@ -3,6 +3,7 @@ name: Build and Deploy Dockerized Flask App
 on:
   push:
     branches: [ "main" ]  # Or change to your branch
+  workflow_dispatch:
 
 jobs:
   build:

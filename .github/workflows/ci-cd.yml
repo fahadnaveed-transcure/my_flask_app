@@ -27,7 +27,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
             
-    - name: Install dependencies(only if cache was missed)
+    - name: Install dependencies
       
       #install --upgrade pip: Tells pip to install the latest version of itself.
       #Using python -m pip makes sure the pip used matches the python you're running.
@@ -56,8 +56,8 @@ jobs:
     - name: create artifact to upload
       run: |
         mkdir -p uploaded/artifact
-        echo hello > uploaded/artifact/world.txt
-        echo hello world > uploaded/artifact/city.txt
+        echo hello > uploaded/artifactworld.txt
+        echo hello world > uploaded/artifactcity.txt
 
 
     - name: to upload artifact

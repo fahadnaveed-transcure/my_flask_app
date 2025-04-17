@@ -61,7 +61,7 @@ jobs:
 
     - uses: vimtor/action-zip@v1.2
         with:
-          files: world.txt city.txt
+          files: uploaded/artifact/*.txt
           dest: build.zip
 
 

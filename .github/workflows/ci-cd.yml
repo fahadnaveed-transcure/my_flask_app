@@ -60,7 +60,7 @@ jobs:
         echo hello world > uploaded/artifact/city.txt
 
     - uses: vimtor/action-zip@v1.2
-        with:
+      with:
           files: uploaded/artifact/*.txt
           dest: build.zip
 

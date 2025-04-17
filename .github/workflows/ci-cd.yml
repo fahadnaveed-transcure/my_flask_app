@@ -56,8 +56,13 @@ jobs:
     - name: create artifact to upload
       run: |
         mkdir -p uploaded/artifact
-        echo hello > uploaded/artifactworld.txt
-        echo hello world > uploaded/artifactcity.txt
+        echo hello > uploaded/artifact/world.txt
+        echo hello world > uploaded/artifact/city.txt
+
+    - uses: vimtor/action-zip@v1.2
+        with:
+          files: world.txt city.txt
+          dest: build.zip
 
 
     - name: to upload artifact
@@ -68,6 +73,7 @@ jobs:
         path: |
           uploaded/artifact/world.txt
           uploaded/artifact/city.txt
+          ${{ github.workspace }}/build.zip
 
     
   docker:

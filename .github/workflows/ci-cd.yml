@@ -28,7 +28,7 @@ jobs:
             ${{ runner.os }}-pip-
             
     - name: Install dependencies(only if cache was missed)
-      if: steps.pip-cache.outputs.cache-hit != 'true'
+      
       #install --upgrade pip: Tells pip to install the latest version of itself.
       #Using python -m pip makes sure the pip used matches the python you're running.
       run: |

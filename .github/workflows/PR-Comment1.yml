@@ -19,7 +19,7 @@ jobs:
         id: hello
         with:
           message: |
-            Hello world $ORGANIZATION - '$REPOSITORY' ! :wave:
+            Hello ${{ github.event.repository.name }} has been updated total changed files ${{ github.event.changed_files }}  ! :wave:
             echo '$GITHUB_TOKEN'
             echo '$ORGANIZATION'
             echo '$REPOSITORY'

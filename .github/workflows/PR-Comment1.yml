@@ -16,6 +16,7 @@ jobs:
         run: echo '${{ toJSON(github.event) }}' | jq
       - name: Comment PR
         uses: thollander/actions-comment-pull-request@v3
+        id: hello
         with:
           message: |
             Hello world $ORGANIZATION - '$REPOSITORY' ! :wave:

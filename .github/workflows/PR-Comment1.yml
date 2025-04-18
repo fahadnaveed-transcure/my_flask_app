@@ -12,14 +12,26 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
+      - name: "dump github context"
+        run: echo '${{ toJSON(github.event) }}' | jq
       - name: Comment PR
         uses: thollander/actions-comment-pull-request@v3
         with:
           message: |
             Hello world ! :wave:
+            echo "$GITHUB_TOKEN"
+            echo "$ORGANIZATION"
+            echo "$REPOSITORY"
           reactions: eyes, rocket
 
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          #ORGANIZATION: ${{ github.event.organization.login }}
+          ORGANIZATION: ${{ github.event.repository.owner.login }}
+          REPOSITORY: ${{ github.event.repository.name }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+
+          
       - name: Check outputs
         run: |
           echo "id : ${{ steps.hello.outputs.id }}"

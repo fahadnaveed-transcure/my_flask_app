@@ -1,0 +1,22 @@
+name: Review Checklist PR Comment
+
+on:
+  pull_request:
+    types:
+      - reopened
+    #paths:
+      #- 'features/**'
+      
+jobs:
+  auto-comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+      - name: PR Comment
+        run:
+          gh pr comment $PRNUM --body-file .github/workflows/review_checklist.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          PRNUM: ${{ github.event.pull_request.number }}

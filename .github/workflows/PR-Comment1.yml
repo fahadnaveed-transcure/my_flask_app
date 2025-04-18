@@ -19,9 +19,12 @@ jobs:
         with:
           message: |
             Hello world ! :wave:
-            echo "$GITHUB_TOKEN"
-            echo "$ORGANIZATION"
-            echo "$REPOSITORY"
+            echo '$GITHUB_TOKEN'
+            echo '$ORGANIZATION'
+            echo '$REPOSITORY'
+            echo $CHANGED_FILES
+            echo $TOTAL_COMMENTS
+            echo $TOTAL_COMMITS
           reactions: eyes, rocket
 
         env:
@@ -29,7 +32,9 @@ jobs:
           #ORGANIZATION: ${{ github.event.organization.login }}
           ORGANIZATION: ${{ github.event.repository.owner.login }}
           REPOSITORY: ${{ github.event.repository.name }}
-          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          CHANGED_FILES: ${{ github.event.changed_files }}
+          TOTAL_COMMENTS: ${{ github.event.comments }}
+          TOTAL_COMMITS: ${{ github.event.commits }}
 
           
       - name: Check outputs

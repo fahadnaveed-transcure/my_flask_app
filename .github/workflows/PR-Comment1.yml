@@ -18,7 +18,7 @@ jobs:
         uses: thollander/actions-comment-pull-request@v3
         with:
           message: |
-            Hello world ! :wave:
+            Hello world $ORGANIZATION - '$REPOSITORY' ! :wave:
             echo '$GITHUB_TOKEN'
             echo '$ORGANIZATION'
             echo '$REPOSITORY'

@@ -19,23 +19,17 @@ jobs:
         id: hello
         with:
           message: |
-            Hello ${{ github.event.repository.name }} has been updated total changed files ${{ github.event.changed_files }}  ! :wave:
-            echo '$GITHUB_TOKEN'
-            echo '$ORGANIZATION'
-            echo '$REPOSITORY'
-            echo '$CHANGED_FILES'
-            echo '$TOTAL_COMMENTS'
-            echo '$TOTAL_COMMITS'
+            Hello ${{ github.event.repository.name }} has been updated   ! :wave:
+             **PR Summary**
+            - **Title**: ${{ github.event.pull_request.title }}
+            - **Branch**: `${{ github.head_ref }}`
+            - **Commit**: `${{ env.HEAD_SHA }}`
+            - **Repo**: `${{ github.repository }}`
+
+            ${{ steps.hello.outputs.body }}
           reactions: eyes, rocket
 
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          #ORGANIZATION: ${{ github.event.organization.login }}
-          ORGANIZATION: ${{ github.event.repository.owner.login }}
-          REPOSITORY: ${{ github.event.repository.name }}
-          CHANGED_FILES: ${{ github.event.changed_files }}
-          TOTAL_COMMENTS: ${{ github.event.base.comments }}
-          TOTAL_COMMITS: ${{ github.event.base.commits }}
+       
 
           
       - name: Check outputs

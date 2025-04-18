@@ -22,6 +22,7 @@ jobs:
           PR_NUMBER=${{ github.event.pull_request.number }}
           COMMENT="Your checklist comment here hello buddy"
           GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          COMMENT_URL="${{ github.event.issue.comments_url }}"    #"https://api.github.com/repos/${{ github.repository }}/issues/${PR_NUMBER}/comments"
+          COMMENT_URL="https://api.github.com/repos/${{ github.repository }}/issues/${PR_NUMBER}/comments"
+          #"${{ github.event.issue.comments_url }}"    #
     
           curl -s -H "Authorization: token ${GITHUB_TOKEN}" -X POST $COMMENT_URL -d "{\"body\":\"$COMMENT\"}"

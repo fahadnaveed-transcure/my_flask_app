@@ -13,7 +13,7 @@ jobs:
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: pass_variableBB
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT_WORKFLOW_DISPATCH }}
           inputs: '{"commit_hash": "${{ github.sha }}" }'
           ref: ${{ github.ref_name }}  #summary_AI  #main  # or another branch if needed.
             

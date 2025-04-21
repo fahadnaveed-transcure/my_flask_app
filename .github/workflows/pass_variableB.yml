@@ -16,8 +16,8 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: commit-info
-          github-token: ${{ secrets.GH_PAT }} # token with actions:read permissions on target repo
-          #repository: fahadnaveed-transcure/my_flask_app
+          github-token: ${{ secrets.github.token }} # token with actions:read permissions on target repo
+          repository: fahadnaveed-transcure/my_flask_app
           path: ./commit.txt
       
       - name: Read commit hash

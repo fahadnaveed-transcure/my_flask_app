@@ -1,4 +1,4 @@
-name: pass_variableBB.yml
+name: pass_variableBB
 
 on:
   workflow_dispatch:

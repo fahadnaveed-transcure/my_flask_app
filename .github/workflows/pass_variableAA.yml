@@ -10,7 +10,7 @@ jobs:
       - name: Trigger next workflow
         uses: benc-uk/workflow-dispatch@v1
         with:
-          workflow: pass_variableBB.yml
+          workflow: pass_variableBB
           token: ${{ secrets.GITHUB_TOKEN }}
           inputs: '{"commit_hash": "${{ github.sha }}" }'
           ref: summary_AI  #main  # or another branch if needed.

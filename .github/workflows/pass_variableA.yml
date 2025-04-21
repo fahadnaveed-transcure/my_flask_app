@@ -1,4 +1,4 @@
-name: pass variable from one workflow to tohe using  file or inputs
+name: pass variable to file
 
 on:
   push:
@@ -12,7 +12,7 @@ jobs:
         - name: Save commit hash
           run: |
             echo "COMMIT_HASH=${{ github.sha }}" > commit.txt
-            echo "this value was saved" in commit file $COMMIT_HASH"
+            echo "this value was saved in commit file $COMMIT_HASH"
     
         - name: Upload artifact
           uses: actions/upload-artifact@v4

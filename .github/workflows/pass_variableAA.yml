@@ -2,10 +2,12 @@ name: A Pass variable via workflow dispatch
 
 on: 
   push:
+  
 
 jobs:
   flowA:
     runs-on: ubuntu-latest
+    permissions: read-all
     steps:
       - name: Trigger next workflow
         uses: benc-uk/workflow-dispatch@v1

@@ -1,0 +1,19 @@
+name: pass variable from one workflow to tohe using  file or inputs
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  use-file:
+      runs-on: ubuntu-latest
+      steps:
+      
+        - name: Save commit hash
+          run: echo "COMMIT_HASH=${{ github.sha }}" > commit.txt
+    
+        - name: Upload artifact
+          uses: actions/upload-artifact@v3
+          with:
+            name: commit-info
+            path: commit.txt

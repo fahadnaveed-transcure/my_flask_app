@@ -19,7 +19,7 @@ jobs:
           name: "commit-info"
           github-token: ${{ github.token }} # token with actions:read permissions on target repo
           repository: ${{github.repository}}
-          path: ./commit.txt
+          path: commit.txt
           run-id: 14571599651
       
       - name: Read commit hash

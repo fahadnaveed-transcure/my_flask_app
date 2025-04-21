@@ -1,0 +1,19 @@
+name: B workflow is called by AA
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit_hash:
+        required: true
+        type: string
+
+jobs:
+  getvalue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: show output
+        run: |
+          echo $commit_hash
+          echo "$commit_hash value retrieved"
+          
+    

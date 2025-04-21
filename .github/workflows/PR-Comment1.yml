@@ -1,0 +1,39 @@
+name: Add comment on PR
+on: 
+  pull_request: 
+    types: [opened, reopened]
+
+jobs:
+  example_comment_pr:
+    runs-on: ubuntu-latest
+    permissions: 
+     pull-requests: write
+    name: An example job to comment a PR
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: "dump github context"
+        run: echo '${{ toJSON(github.event) }}' | jq
+      - name: Comment PR
+        uses: thollander/actions-comment-pull-request@v3
+        id: hello
+        with:
+          message: |
+            Hello ${{ github.event.repository.name }} has been updated   ! :wave:
+             **PR Summary**
+            - **Title**: ${{ github.event.pull_request.title }}
+            - **Branch**: `${{ github.head_ref }}`
+            - **Commit**: `${{ env.HEAD_SHA }}`
+            - **Repo**: `${{ github.repository }}`
+
+            ${{ steps.hello.outputs.body }}
+          reactions: eyes, rocket
+
+       
+
+          
+      - name: Check outputs
+        run: |
+          echo "id : ${{ steps.hello.outputs.id }}"
+          echo "body : ${{ steps.hello.outputs.body }}"
+          echo "html-url : ${{ steps.hello.outputs.html-url }}"

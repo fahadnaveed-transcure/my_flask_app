@@ -1,0 +1,21 @@
+name: pass-variable-to-file
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  use-file:
+      runs-on: ubuntu-latest
+      steps:
+      
+        - name: Save commit hash
+          run: |
+            echo "COMMIT_HASH=${{ github.sha }}" > commit.txt
+            echo "this value was saved in commit file $COMMIT_HASH"
+    
+        - name: Upload artifact
+          uses: actions/upload-artifact@v4
+          with:
+            name: commit-info
+            path: commit.txt

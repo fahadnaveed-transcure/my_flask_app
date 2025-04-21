@@ -1,0 +1,31 @@
+name: passvariable in this workflow (recieving end)
+
+on: 
+  push:
+  workflow_dispatch:
+  workflow_run:
+    workflows: [pass-variable-to-file]
+    types:
+      - completed
+
+jobs:
+  recieve_var:
+    runs-on: ubuntu-latest
+    permissions: read-all
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: "commit-info"
+          github-token: ${{ github.token }} # token with actions:read permissions on target repo
+          repository: ${{github.repository}}
+          run-id: ${{github.run_id}}
+          #run-id: 14571599651
+      
+      - name: Read commit hash
+        run: |
+          COMMIT_HASH=$(cat commit.txt)
+          echo "Commit: $COMMIT_HASH"
+          echo "Variable successfully passed"
+
+          

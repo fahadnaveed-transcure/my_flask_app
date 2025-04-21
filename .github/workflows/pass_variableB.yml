@@ -1,0 +1,22 @@
+name: passvariable in this workflow (recieving end)
+
+on: 
+  push:
+  workflow_dispatch:
+
+jobs:
+  recieve_var:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: commit-info
+      
+      - name: Read commit hash
+        run: |
+          COMMIT_HASH=$(cat commit.txt)
+          echo "Commit: $COMMIT_HASH"
+          echo "Variable successfully passed"
+
+          

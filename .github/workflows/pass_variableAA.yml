@@ -12,5 +12,5 @@ jobs:
         with:
           workflow: pass_variableBB.yml
           token: ${{ secrets.GITHUB_TOKEN }}
-          inputs: '{"commit_hash": ${{ github.sha }} }'
+          inputs: '{"commit_hash: ${{ github.sha }}" }'
             

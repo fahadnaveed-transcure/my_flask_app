@@ -1,4 +1,4 @@
-name: B workflow is called by AA
+name: pass_variableBB.yml
 
 on:
   workflow_dispatch:

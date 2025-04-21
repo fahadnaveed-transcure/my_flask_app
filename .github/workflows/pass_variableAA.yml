@@ -13,5 +13,5 @@ jobs:
           workflow: pass_variableBB.yml
           token: ${{ secrets.GITHUB_TOKEN }}
           inputs: '{"commit_hash": "${{ github.sha }}" }'
-          ref: summary_AI  #main  # or another branch if needed
+          ref: summary_AI  #main  # or another branch if needed.
             

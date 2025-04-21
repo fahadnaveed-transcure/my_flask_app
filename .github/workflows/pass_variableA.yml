@@ -1,4 +1,4 @@
-name: pass variable to file
+name: pass-variable-to-file
 
 on:
   push:

@@ -2,13 +2,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Flask App</title>
+    <title>Puter Chat</title>
+    <script src="https://js.puter.com/v2/"></script>
 </head>
 <body>
-    <h1>Hello from HTML!</h1>
-    <script src="https://js.puter.com/v2/"></script>
+    <h2>Ask the AI a question:</h2>
+    <input type="text" id="userInput" placeholder="Type your question here..." style="width: 300px;" />
+    <button onclick="askQuestion()">Ask</button>
+
+    <h3>Response:</h3>
+    <div id="response"></div>
+
     <script>
-        puter.ai.chat(`Why did the chicken cross the road?`).then(puter.print);
+        function askQuestion() {
+            const question = document.getElementById("userInput").value;
+            const responseDiv = document.getElementById("response");
+
+            if (!question.trim()) {
+                responseDiv.innerText = "Please enter a question.";
+                return;
+            }
+
+            responseDiv.innerText = "Thinking...";
+
+            puter.ai.chat(question)
+                .then(answer => {
+                    responseDiv.innerText = answer;
+                })
+                .catch(error => {
+                    responseDiv.innerText = "Oops! Something went wrong.";
+                    console.error(error);
+                });
+        }
     </script>
 </body>
 </html>

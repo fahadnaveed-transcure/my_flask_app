@@ -11,5 +11,6 @@ jobs:
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: pass_variableBB.yml
+          token: ${{ secrets.GITHUB_TOKEN }}
           inputs: |
             commit_hash: ${{ github.sha }}

@@ -3,6 +3,10 @@ name: passvariable in this workflow (recieving end)
 on: 
   push:
   workflow_dispatch:
+  workflow_run:
+    workflows: [pass-variable-to-file]
+    types:
+      - completed
 
 jobs:
   recieve_var:

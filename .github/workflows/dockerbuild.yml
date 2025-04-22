@@ -15,10 +15,16 @@ on:
       docker_pass:
         required: true
 
+    outputs:
+      image_tag:
+        description: "The Docker image tag"
+        value: ${{ jobs.build.outputs.image_tag }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    outputs:
+      image_tag: ${{ steps.set_tag.outputs.tag }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -38,3 +44,7 @@ jobs:
         context: .
         push: true
         tags: ${{ secrets.docker_user }}/flask-app:latest
+
+    
+    - id: set_tag
+      run: echo "tag=flask-app:${GITHUB_SHA::7}" >> $GITHUB_OUTPUT    

@@ -1,8 +1,8 @@
 name: CI/CD for Docker Build
 
 on:
-  #push:
-    #branches: [ "main" ]
+  push:
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
@@ -63,4 +63,4 @@ jobs:
         pip install -r requirements.txt
     - name: Run tests
       run: |
-        pytest
+        pytest #test run

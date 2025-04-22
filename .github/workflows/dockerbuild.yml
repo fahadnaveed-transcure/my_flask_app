@@ -14,7 +14,7 @@ on:
         required: true
       docker_pass:
         required: true
-      token:
+      #token:
         #required: true
 
     outputs:

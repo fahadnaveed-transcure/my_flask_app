@@ -37,4 +37,4 @@ jobs:
       with:
         context: .
         push: true
-        tags: ${{ decrets.docker_user }}/flask-app:latest
+        tags: ${{ secrets.docker_user }}/flask-app:latest

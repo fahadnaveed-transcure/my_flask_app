@@ -74,10 +74,10 @@ jobs:
     steps:
       - name: Use image tag from build workflow
         run: |
-          echo "Image tag is ${{ needs.call-workflow-Build-Docker.outputs.image_tag1 }}"
-          echo "Image tag is ${{ needs.call-workflow-Build-Docker.outputs.image_tag1 }}" >> name.txt
-          echo "Image tag is ${{ needs.call-workflow-Build-Docker.outputs.image_tag2 }}"
-          echo "Image tag is ${{ needs.call-workflow-Build-Docker.outputs.image_tag2 }}" >> name.txt
+          echo "Image tag is ${{ needs.call-workflow-Build-Docker.outputs.image_tag }}"
+          echo "Image tag is ${{ needs.call-workflow-Build-Docker.outputs.image_tag }}" >> name.txt
+          echo "Image tag is ${{ needs.call-workflow-Build-Docker.outputs.image_tagA }}"
+          echo "Image tag2 is ${{ needs.call-workflow-Build-Docker.outputs.image_tagA }}" >> name.txt
 
       - name: to upload artifact
         uses: actions/upload-artifact@v4

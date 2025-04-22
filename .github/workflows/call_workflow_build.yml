@@ -12,7 +12,7 @@ on:
 jobs:
   call-workflow-Build-Docker:
     permissions:
-      contents: read
+      contents: read #testing with permission
     needs: [lint, test]
     uses: ./.github/workflows/dockerbuild.yml
     with:

@@ -70,4 +70,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Use image tag from build workflow
-        run: echo "Image tag is ${{ needs.call-workflow-Build-Docker.image_tag }}"
+        run: |
+          echo "Image tag is ${{ needs.call-workflow-Build-Docker.image_tag }}"
+          echo "Image tag is ${{ needs.call-workflow-Build-Docker.image_tag }}" > name.txt
+
+      - name: to upload artifact
+        uses: actions/upload-artifact@v4
+                   
+        with:
+          name: artifact-caller
+          path: |
+            ./world.txt

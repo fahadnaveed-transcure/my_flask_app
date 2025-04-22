@@ -59,10 +59,12 @@ jobs:
           echo $image_tag1 >> abc.txt
           echo $image_tag >> abc.txt
           echo ${GITHUB_SHA::7} >> abc.txt
+          cat abc.txt
+          echo cat abc.txt
 
        - name: to upload artifact
          uses: actions/upload-artifact@v4                     
          with:
             name: artifact-docker
             path: |
-              ./abc.txt
+              abc.txt

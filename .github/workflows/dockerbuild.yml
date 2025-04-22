@@ -58,7 +58,7 @@ jobs:
         echo $tag
 
     - id: set_value
-      run: echo "secondword=world is yours" >> $GITHUB_OUTPUT
+      run: echo "secondword=world-is-yours" >> $GITHUB_OUTPUT
   testvar:
     needs: build
     runs-on: ubuntu-latest

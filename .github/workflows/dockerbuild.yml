@@ -57,7 +57,7 @@ jobs:
     steps:
        - run: |
           echo "$tag" >> abc.txt
-          echo '$image_tag1' >> abc.txt
+          echo "$image_tag1" >> abc.txt
           echo "$image_tag" >> abc.txt
           echo ${GITHUB_SHA::7} >> abc.txt
           cat abc.txt

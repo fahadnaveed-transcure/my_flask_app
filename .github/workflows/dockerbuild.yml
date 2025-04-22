@@ -18,13 +18,13 @@ on:
     outputs:
       image_tag:
         description: "The Docker image tag"
-        value: ${{ jobs.build.outputs.image_tag }}
+        value: ${{ jobs.build.outputs.image_tag1 }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
     outputs:
-      image_tag: ${{ steps.set_tag.outputs.tag }}
+      image_tag1: ${{ steps.set_tag.outputs.tag }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -47,4 +47,15 @@ jobs:
 
     
     - id: set_tag
-      run: echo "tag=flask-app:${GITHUB_SHA::7}" >> $GITHUB_OUTPUT    
+      run: |
+        echo "tag=flask-app:${GITHUB_SHA::7}" >> $GITHUB_OUTPUT    
+        echo $tag
+  testvar:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+       - run: |
+          echo $tag
+          echo $image_tag1
+          echo $image_tag
+          echo ${{github.sha::7}}

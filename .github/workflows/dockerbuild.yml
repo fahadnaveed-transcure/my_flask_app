@@ -58,4 +58,4 @@ jobs:
           echo $tag
           echo $image_tag1
           echo $image_tag
-          echo ${{github_sha::7}}
+          echo ${GITHUB_SHA::7}

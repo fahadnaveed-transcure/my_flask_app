@@ -48,7 +48,8 @@ jobs:
     
     - id: set_tag
       run: |
-        echo "tag=flask-app:${GITHUB_SHA::7}" >> $GITHUB_OUTPUT    
+        echo "tag=flask-app:${GITHUB_SHA::7}" >> $GITHUB_OUTPUT   
+        echo "tag=flask-app:${GITHUB_SHA::7}" >> abc.txt
         echo $tag
   testvar:
     needs: build
@@ -60,8 +61,7 @@ jobs:
           echo "$image_tag" >> abc.txt
           echo ${GITHUB_SHA::7} >> abc.txt
           cat abc.txt
-          echo ${{ steps.set_tag.outputs.tag }} >> abc.txt
-          echo ${{ jobs.build.outputs.image_tag1 }} >> abc.txt
+       
           
 
        - name: to upload artifact

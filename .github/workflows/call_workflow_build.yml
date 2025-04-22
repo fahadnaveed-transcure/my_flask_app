@@ -72,7 +72,7 @@ jobs:
       - name: Use image tag from build workflow
         run: |
           echo "Image tag is ${{ needs.call-workflow-Build-Docker.image_tag }}"
-          echo "Image tag is ${{ needs.call-workflow-Build-Docker.image_tag }}" > name.txt
+          echo "Image tag is ${{ needs.call-workflow-Build-Docker.image_tag }}" >> name.txt
 
       - name: to upload artifact
         uses: actions/upload-artifact@v4
@@ -80,4 +80,4 @@ jobs:
         with:
           name: artifact-caller
           path: |
-            ./world.txt
+            world.txt

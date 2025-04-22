@@ -64,3 +64,10 @@ jobs:
     - name: Run tests
       run: |
         pytest #test run1
+
+  testoutput:
+    needs: call-workflow-Build-Docker
+    runs-on: ubuntu-latest
+    steps:
+      - name: Use image tag from build workflow
+        run: echo "Image tag is ${{ needs.call-build.outputs.image_tag }}"

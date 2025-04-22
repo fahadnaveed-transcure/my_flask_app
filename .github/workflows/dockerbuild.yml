@@ -15,7 +15,7 @@ on:
       docker_pass:
         required: true
       token:
-        required: true
+        #required: true
 
     outputs:
       image_tag:

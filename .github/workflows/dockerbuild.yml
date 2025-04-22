@@ -55,12 +55,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
        - run: |
-          echo $tag >> abc.txt
-          echo $image_tag1 >> abc.txt
-          echo $image_tag >> abc.txt
+          echo "$tag" >> abc.txt
+          echo '$image_tag1' >> abc.txt
+          echo "$image_tag" >> abc.txt
           echo ${GITHUB_SHA::7} >> abc.txt
           cat abc.txt
-          echo cat abc.txt
+          echo ${{ steps.set_tag.outputs.tag }} >> abc.txt
+          echo ${{ jobs.build.outputs.image_tag1 }} >> abc.txt
+          
 
        - name: to upload artifact
          uses: actions/upload-artifact@v4                     

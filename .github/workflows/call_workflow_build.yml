@@ -11,8 +11,8 @@ on:
 
 jobs:
   call-workflow-Build-Docker:
-    permissions:
-      contents: read #testing with permission
+    #permissions:
+      #contents: read #testing with permission
     needs: [lint, test]
     uses: ./.github/workflows/dockerbuild.yml
     with:
@@ -20,7 +20,7 @@ jobs:
     secrets:
       docker_user: ${{ secrets.DOCKER_USERNAME }}
       docker_pass: ${{ secrets.DOCKER_PASSWORD }}
-      token: ${{ secrets.GITHUB_TOKEN }}
+      #token: ${{ secrets.GITHUB_TOKEN }}
       
   lint:
     name: Lint with flake8

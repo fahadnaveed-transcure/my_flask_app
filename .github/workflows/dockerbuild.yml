@@ -20,11 +20,16 @@ on:
         description: "The Docker image tag"
         value: ${{ jobs.build.outputs.image_tag1 }}
 
+      image_tagA:
+        description: "The Docker image tag"
+        value: ${{ jobs.build.outputs.image_tag2 }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
     outputs:
       image_tag1: ${{ steps.set_tag.outputs.tag }}
+      image_tag2: ${{ steps.set_value.outputs.secondword }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -51,6 +56,9 @@ jobs:
         echo "tag=flask-app:${GITHUB_SHA::7}" >> $GITHUB_OUTPUT   
         echo "tag=flask-app:${GITHUB_SHA::7}" >> abc.txt
         echo $tag
+
+    - id: set_value
+      run: echo "secondword=world is yours" >> $GITHUB_OUTPUT
   testvar:
     needs: build
     runs-on: ubuntu-latest

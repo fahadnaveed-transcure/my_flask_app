@@ -1,9 +1,19 @@
 name: Build and Deploy Dockerized Flask App
 
 on:
-  push:
-    branches: [ "main" ]  # Or change to your branch
+  #push:
+    #branches: [ "main" ]  # Or change to your branch
   workflow_dispatch:
+  workflow_call:
+    inputs:
+      branch:
+        required: true
+        type: string
+    secrets:
+      docker_user:
+        required: true
+      docker_pass:
+        required: true
 
 jobs:
   build:
@@ -19,12 +29,12 @@ jobs:
     - name: Login to DockerHub
       uses: docker/login-action@v3
       with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+        username: ${{ secrets.docker_user }}
+        password: ${{ secrets.docker_pass }}
 
     - name: Build and Push Docker image
       uses: docker/build-push-action@v5
       with:
         context: .
         push: true
-        tags: ${{ secrets.DOCKER_USERNAME }}/flask-app:latest
+        tags: ${{ decrets.docker_user }}/flask-app:latest
